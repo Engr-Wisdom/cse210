@@ -40,6 +40,12 @@ namespace cse210
                 int smallestNumber = positiveNumbers.Min();
                 Console.WriteLine($"The smallest positive number is: {smallestNumber}");
             }
+
+            numbers.Sort();
+            foreach (int number in numbers)
+            {
+                Console.WriteLine(number);
+            }
         }
     }
 }
