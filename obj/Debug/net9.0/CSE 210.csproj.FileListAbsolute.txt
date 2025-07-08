@@ -26,3 +26,4 @@ C:\Users\DELL\OneDrive\Desktop\cse210\obj\Debug\net9.0\refint\CSE 210.dll
 C:\Users\DELL\OneDrive\Desktop\cse210\obj\Debug\net9.0\CSE 210.pdb
 C:\Users\DELL\OneDrive\Desktop\cse210\obj\Debug\net9.0\CSE 210.genruntimeconfig.cache
 C:\Users\DELL\OneDrive\Desktop\cse210\obj\Debug\net9.0\ref\CSE 210.dll
+C:\Users\DELL\OneDrive\Desktop\cse210\obj\Debug\net9.0\CSE 210.sourcelink.json
