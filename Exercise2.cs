@@ -2,9 +2,9 @@ using System;
 
 namespace cse210
 {
-    class Exercise2
+    public class Exercise2
     {
-        static void Main(string[] args)
+        public static void Run()
         {
             Console.Write("Enter Your Grade: ");
             float grade = float.Parse(Console.ReadLine()!);
@@ -23,7 +23,7 @@ namespace cse210
             }
             else if (grade >= 70)
             {
-                gradeLetter = "C"; // Capitalized "C"
+                gradeLetter = "C";
             }
             else if (grade >= 60)
             {
@@ -34,37 +34,35 @@ namespace cse210
                 gradeLetter = "F";
             }
 
+            // Add "+" or "-" sign only if gradeLetter is not "F"
             if (gradeLetter != "F")
             {
                 if (lastDigit >= 7)
                 {
-                    gradeSign += "+";
+                    gradeSign = "+";
                 }
                 else if (lastDigit < 3)
                 {
-                    gradeSign += "-";
-                }
-                else
-                {
-                    gradeSign += "";
+                    gradeSign = "-";
                 }
             }
 
+            // No A+ allowed
             if (grade >= 97)
             {
                 gradeLetter = "A";
                 gradeSign = "";
             }
+
             Console.WriteLine($"Your grade is: {gradeLetter}{gradeSign}");
 
             if (grade >= 70)
             {
                 Console.WriteLine("Congratulations! You passed the course");
             }
-
             else
             {
-                Console.WriteLine("Don't worry keep trying you will do better next time");
+                Console.WriteLine("Don't worry, keep trying—you will do better next time.");
             }
         }
     }

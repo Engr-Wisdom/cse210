@@ -2,9 +2,9 @@ using System;
 
 namespace cse210
 {
-    class Exercise3
+    public class Exercise3
     {
-        static void Main(String[] args)
+        public static void Run()
         {
             Random randomGenerator = new Random();
             int number = randomGenerator.Next(1, 100);
@@ -21,12 +21,10 @@ namespace cse210
                 {
                     Console.WriteLine("Lower");
                 }
-
                 else if (guess < number)
                 {
                     Console.WriteLine("Higher");
                 }
-
                 else
                 {
                     Console.WriteLine($"You guessed it! \nIt took you {guess_count} guesses");

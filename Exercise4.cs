@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace cse210
 {
-    class Exercise4
+    public class Exercise4
     {
-        static void Main(String[] args)
+        public static void Run()
         {
             List<int> numbers = new List<int>();
             int user = -1;
@@ -42,6 +44,7 @@ namespace cse210
             }
 
             numbers.Sort();
+            Console.WriteLine("Sorted numbers:");
             foreach (int number in numbers)
             {
                 Console.WriteLine(number);

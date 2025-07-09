@@ -2,9 +2,9 @@ using System;
 
 namespace cse210
 {
-    class Exercise5
+    public class Exercise5
     {
-        static void Main(string[] args)
+        public static void Run()
         {
             DisplayWelcome();
             string name = PromptUserName();
@@ -27,7 +27,7 @@ namespace cse210
 
         static int PromptUserNumber()
         {
-            Console.Write("Please enter our favorite number: ");
+            Console.Write("Please enter your favorite number: ");
             int favoriteNum = int.Parse(Console.ReadLine()!);
             return favoriteNum;
         }
@@ -41,6 +41,6 @@ namespace cse210
         static void DisplayResult(string name, int squareNumber)
         {
             Console.WriteLine($"{name}, the square of your number is {squareNumber}");
-        }      
+        }
     }
 }
