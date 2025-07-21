@@ -1,98 +1,61 @@
-// Program.cs
-// EXCEEDS REQUIREMENTS:
-// - Added CSV saving/loading functionality
-// - Entries are saved in a format compatible with Excel
-// - Properly escapes commas and quotes
-// - Added 'Mood' field to encourage emotional reflection
-// - Demonstrates abstraction via Journal and JournalEntry classes
-
 using System;
 using System.Collections.Generic;
 
 class Program
 {
-    static List<string> prompts = new List<string>
+    static void RunScriptureMemorizer()
     {
-        "If I had one thing I could do over today, what would it be?",
-        "What was the best part of my day?",
-        "Who is the most interesting person you interacted with today?",
-        "How did I see the hand of the Lord in my life today?",
-        "What was the strongest emotion I felt today?"
-    };
-
-    static void Main()
-    {
-        Console.WriteLine("Welcome to the Journal Program!");
-        string[] choices = { "Write", "Display", "Load", "Save", "Quit" };
-        Journal journal = new Journal();
-        int user = 0;
-
-        while (user != 5)
+ 
+        var scriptureLibrary = new List<Scripture>
         {
-            Console.WriteLine("\nPlease select one of the following choices:");
-            for (int i = 0; i < choices.Length; i++)
+            new Scripture(new Reference("Proverbs", 3, 5, 6),
+                "Trust in the Lord with all thine heart and lean not unto thine own understanding."),
+            
+            new Scripture(new Reference("John", 3, 16),
+                "For God so loved the world that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."),
+            
+            new Scripture(new Reference("2 Nephi", 2, 25),
+                "Adam fell that men might be; and men are, that they might have joy."),
+            
+            new Scripture(new Reference("Mosiah", 2, 17),
+                "When ye are in the service of your fellow beings ye are only in the service of your God."),
+            
+            new Scripture(new Reference("Philippians", 4, 13),
+                "I can do all things through Christ which strengtheneth me.")
+        };
+
+        Random rand = new Random();
+        int index = rand.Next(scriptureLibrary.Count);
+        var scripture = scriptureLibrary[index];
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine(scripture.DisplayCurrentScripture());
+
+            if (scripture.AllWordsHidden())
             {
-                Console.WriteLine($"{i + 1}. {choices[i]}");
+                Console.WriteLine("\nAll words are hidden. Program complete!");
+                break;
             }
 
-            Console.Write("What would you like to do? ");
-            bool valid = int.TryParse(Console.ReadLine(), out user);
+            Console.Write("\nPress Enter to hide more words, or type 'quit' to exit: ");
+            string input = Console.ReadLine();
 
-            if (!valid || user < 1 || user > 5)
+            if (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Invalid input. Please choose a number between 1 and 5.");
-                continue;
+                scripture.HideRandomWords();
             }
-
-            if (user == 1)
+            else if (input.Trim().ToLower() == "quit")
             {
-                string promptText = GetRandomPrompt();
-                Console.WriteLine(promptText);
-                string entryText = Console.ReadLine()!;
-                Console.Write("How was your mood today? (e.g., Happy, Sad, Grateful): ");
-                string mood = Console.ReadLine()!;
-
-                journal.AddEntry(new JournalEntry
-                {
-                    Date = GetCurrentDate(),
-                    PromptText = promptText,
-                    EntryText = entryText,
-                    Mood = mood
-                });
-            }
-            else if (user == 2)
-            {
-                journal.DisplayEntries();
-            }
-            else if (user == 3)
-            {
-                Console.Write("What is the filename to load (.csv)? ");
-                string fileName = Console.ReadLine()!;
-                journal.LoadEntries(fileName);
-            }
-            else if (user == 4)
-            {
-                Console.Write("What is the filename to save (.csv)? ");
-                string fileName = Console.ReadLine()!;
-                journal.SaveEntries(fileName);
-            }
-            else
-            {
-                Console.WriteLine("Goodbye");
+                Console.WriteLine("Program ended by user.");
+                break;
             }
         }
     }
 
-    static string GetRandomPrompt()
+    static void Main(string[] args)
     {
-        Random random = new Random();
-        int index = random.Next(prompts.Count);
-        return prompts[index];
-    }
-
-    static string GetCurrentDate()
-    {
-        DateTime now = DateTime.Now;
-        return $"{now.Month}/{now.Day}/{now.Year}";
+        RunScriptureMemorizer();
     }
 }
