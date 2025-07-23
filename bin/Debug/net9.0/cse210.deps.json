@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v9.0": {
-      "CSE 210/1.0.0": {
+      "cse210/1.0.0": {
         "runtime": {
-          "CSE 210.dll": {}
+          "cse210.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CSE 210/1.0.0": {
+    "cse210/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
