@@ -1,36 +1,39 @@
-class Video
+using System;
+using System.Collections.Generic;
+
+public class Video
 {
-    public string Title { get; set; }
-    public string Author { get; set; }
-    public int Length { get; set; } // in seconds
-    public List<Comment> Comments { get; set; }
+    private string _title;
+    private string _author;
+    private int _length; // in seconds
+    private List<Comment> _comments;
 
     public Video(string title, string author, int length)
     {
-        Title = title;
-        Author = author;
-        Length = length;
-        Comments = new List<Comment>();
+        _title = title;
+        _author = author;
+        _length = length;
+        _comments = new List<Comment>();
     }
 
     public void AddComment(Comment comment)
     {
-        Comments.Add(comment);
+        _comments.Add(comment);
     }
 
     public int GetCommentCount()
     {
-        return Comments.Count;
+        return _comments.Count;
     }
 
     public void DisplayInfo()
     {
-        Console.WriteLine($"Title: {Title}");
-        Console.WriteLine($"Author: {Author}");
-        Console.WriteLine($"Length: {Length} seconds");
+        Console.WriteLine($"Title: {_title}");
+        Console.WriteLine($"Author: {_author}");
+        Console.WriteLine($"Length: {_length} seconds");
         Console.WriteLine($"Number of Comments: {GetCommentCount()}");
         Console.WriteLine("Comments:");
-        foreach (var comment in Comments)
+        foreach (Comment comment in _comments)
         {
             Console.WriteLine($"- {comment.Name}: {comment.Text}");
         }
