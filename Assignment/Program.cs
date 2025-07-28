@@ -5,27 +5,26 @@ class Program
 {
     static void Main()
     {
-        Video video1 = new Video("How to Bake Bread", "Chef John", 3000);
-        video1.AddComment(new Comment("Mary", "Great tutorial!"));
-        video1.AddComment(new Comment("Bright", "I tried it and it worked"));
-        video1.AddComment(new Comment("James", "Can I use almond flour?"));
+        var address1 = new Address("123 Main St", "Provo", "UT", "USA");
+        var customer1 = new Customer("John Doe", address1);
+        var order1 = new Order(customer1);
+        order1.AddProduct(new Product("Book", "B123", 10.0, 2));
+        order1.AddProduct(new Product("Pen", "P456", 1.5, 5));
 
-        Video video2 = new Video("Learn C# in 10 Minutes", "DevWizard", 11000);
-        video2.AddComment(new Comment("Alice", "Super helpful"));
-        video2.AddComment(new Comment("Ben", "More videos please"));
-        video2.AddComment(new Comment("David!", "Thanks"));
-        video2.AddComment(new Comment("Carla", "I love the explanation"));
+        var address2 = new Address("42 Street", "Lagos", "LA", "Nigeria");
+        var customer2 = new Customer("Wisdom Effiong", address2);
+        var order2 = new Order(customer2);
+        order2.AddProduct(new Product("Laptop", "L789", 800.0, 1));
+        order2.AddProduct(new Product("Mouse", "M321", 25.0, 1));
 
-        Video video3 = new Video("Software Engineer Roadmap", "Wisdom Effiong", 5000);
-        video3.AddComment(new Comment("Elisha", "Thank you for the roadmap"));
-        video3.AddComment(new Comment("Destiny", "Please create a video for cybersecurity roadmap"));
-        video3.AddComment(new Comment("Victor", "I am so clarified with your video"));
+        var orders = new List<Order> { order1, order2 };
 
-        List<Video> videos = new List<Video> { video1, video2, video3 };
-
-        foreach (Video video in videos)
+        for (int i = 0; i < orders.Count; i++)
         {
-            video.DisplayInfo();
+            Console.WriteLine($"\n--- Order {i + 1} ---");
+            Console.WriteLine("Packing Label:\n" + orders[i].GetPackingLabel());
+            Console.WriteLine("Shipping Label:\n" + orders[i].GetShippingLabel());
+            Console.WriteLine("Total Price: $" + orders[i].GetTotalCost().ToString("F2"));
         }
     }
 }
