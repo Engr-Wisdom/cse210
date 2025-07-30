@@ -1,30 +1,64 @@
-﻿using System;
+// I added more scriptures. When the user run the program it randomly choose to a scripture
+// I also added a text to display when thhe user type quit
+
+using System;
 using System.Collections.Generic;
 
 class Program
 {
-    static void Main()
+    static void RunScriptureMemorizer()
     {
-        var address1 = new Address("123 Main St", "Provo", "UT", "USA");
-        var customer1 = new Customer("John Doe", address1);
-        var order1 = new Order(customer1);
-        order1.AddProduct(new Product("Book", "B123", 10.0, 2));
-        order1.AddProduct(new Product("Pen", "P456", 1.5, 5));
-
-        var address2 = new Address("42 Street", "Lagos", "LA", "Nigeria");
-        var customer2 = new Customer("Wisdom Effiong", address2);
-        var order2 = new Order(customer2);
-        order2.AddProduct(new Product("Laptop", "L789", 800.0, 1));
-        order2.AddProduct(new Product("Mouse", "M321", 25.0, 1));
-
-        var orders = new List<Order> { order1, order2 };
-
-        for (int i = 0; i < orders.Count; i++)
+ 
+        var scriptureLibrary = new List<Scripture>
         {
-            Console.WriteLine($"\n--- Order {i + 1} ---");
-            Console.WriteLine("Packing Label:\n" + orders[i].GetPackingLabel());
-            Console.WriteLine("Shipping Label:\n" + orders[i].GetShippingLabel());
-            Console.WriteLine("Total Price: $" + orders[i].GetTotalCost().ToString("F2"));
+            new Scripture(new Reference("Proverbs", 3, 5, 6),
+                "Trust in the Lord with all thine heart and lean not unto thine own understanding; in all thy ways acknowledge him, and he shall direct thy paths."),
+            
+            new Scripture(new Reference("John", 3, 16),
+                "For God so loved the world that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."),
+            
+            new Scripture(new Reference("2 Nephi", 2, 25),
+                "Adam fell that men might be; and men are, that they might have joy."),
+            
+            new Scripture(new Reference("Mosiah", 2, 17),
+                "When ye are in the service of your fellow beings ye are only in the service of your God."),
+            
+            new Scripture(new Reference("Philippians", 4, 13),
+                "I can do all things through Christ which strengtheneth me.")
+        };
+
+        Random rand = new Random();
+        int index = rand.Next(scriptureLibrary.Count);
+        var scripture = scriptureLibrary[index];
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine(scripture.DisplayCurrentScripture());
+
+            if (scripture.AllWordsHidden())
+            {
+                Console.WriteLine("\nAll words are hidden. Program complete!");
+                break;
+            }
+
+            Console.Write("\nPress Enter to hide more words, or type 'quit' to exit: ");
+            string input = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                scripture.HideRandomWords();
+            }
+            else if (input.Trim().ToLower() == "quit")
+            {
+                Console.WriteLine("Program ended by user.");
+                break;
+            }
         }
+    }
+
+    static void Main(string[] args)
+    {
+        RunScriptureMemorizer();
     }
 }
