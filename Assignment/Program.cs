@@ -1,32 +1,33 @@
 ﻿using System;
-using MindfulnessProgram.Activities;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
+        GoalManager manager = new GoalManager();
+        manager.LoadGoals();
+
         while (true)
         {
-            Console.Clear();
-            Console.WriteLine("Mindfulness Program");
-            Console.WriteLine("1. Start Breathing Activity");
-            Console.WriteLine("2. Start Reflection Activity");
-            Console.WriteLine("3. Start Listing Activity");
-            Console.WriteLine("4. Quit");
-            Console.Write("Choose an option: ");
+            Console.WriteLine("Menu:");
+            Console.WriteLine("1. Create Goal");
+            Console.WriteLine("2. List Goals");
+            Console.WriteLine("3. Record Event");
+            Console.WriteLine("4. Save and Exit");
+            Console.Write("Choose: ");
+            string choice = Console.ReadLine();
 
-            string input = Console.ReadLine();
-            Activity activity = input switch
+            if (choice == "1")
+                manager.CreateGoal();
+            else if (choice == "2")
+                manager.ListGoals();
+            else if (choice == "3")
+                manager.RecordEvent();
+            else if (choice == "4")
             {
-                "1" => new BreathingActivity(),
-                "2" => new ReflectionActivity(),
-                "3" => new ListingActivity(),
-                "4" => null,
-                _   => null
-            };
-
-            if (input == "4") break;
-            if (activity != null) activity.Start();
+                manager.SaveGoals();
+                break;
+            }
         }
     }
 }
