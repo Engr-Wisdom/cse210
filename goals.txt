@@ -1,6 +1,0 @@
-100
-SimpleGoal|Wisdom|Coding|100|True
-SimpleGoal|Give a talk|Speak in sacrament meeting when asked|100|False
-EternalGoal|Study the scriptures|Study for atleast 10 minutes|50
-ChecklistGoal|Attend the temple|Attend and perform any ordinance|50|0|3|500
-SimpleGoal|coding|I love coding|100|False
