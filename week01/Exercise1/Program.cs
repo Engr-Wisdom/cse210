@@ -1,9 +1,66 @@
 using System;
 
-class Program
+namespace Grade
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello World! This is the Exercise1 Project.");
+        static void Main(string[] args)
+        {
+            Console.Write("What is your grade? ");
+            int grade = int.Parse(Console.ReadLine());
+
+            string letter = "";
+            string sign = "";
+
+            if (grade >= 90)
+            {
+                letter = "A";
+            } else if (grade >= 80)
+            {
+                letter = "B";
+            } else if (grade >= 70)
+            {
+                letter = "C";
+            } else if (grade >= 60)
+            {
+                letter = "D";
+            } else
+            {
+                letter = "F";
+            }
+
+            if (grade % 10 >= 7)
+            {
+                sign = "+";
+                letter += sign;
+            } else if (grade % 10 < 3)
+            {
+                sign = "-";
+                letter += sign;
+            } else
+            {
+                letter += sign;
+            }
+
+            if (grade >= 93)
+            {
+                letter = "A";
+            }
+
+            if (grade < 60)
+            {
+                letter = "F";
+            }
+
+            Console.WriteLine(letter);
+
+            if (grade > 70)
+            {
+                Console.WriteLine("Congratulations you have passed!");
+            } else
+            {
+                Console.WriteLine("Next time work harder");
+            }
+        }
     }
 }
