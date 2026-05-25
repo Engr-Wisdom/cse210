@@ -1,3 +1,5 @@
+// Abstraction is the process of hiding complex functionality and showing only the relevant ones
+
 using System;
 
 public class Blind
