@@ -1,7 +1,4 @@
 using System;
-using JobTracker;
-using  ResumeBuilder;
-
 class Program
 {
     static void Main(string[] arg)

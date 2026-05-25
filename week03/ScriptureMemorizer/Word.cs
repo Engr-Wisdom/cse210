@@ -1,20 +1,20 @@
-using System;
+// using System;
 
-public class Word
-{
-    private string _text;
-    private bool _isHidden;
+// public class Word
+// {
+//     private string _text;
+//     private bool _isHidden;
 
-    public Word(string text)
-    {
-        _text = text;
-    }
+//     public Word(string text)
+//     {
+//         _text = text;
+//     }
 
-    public void Hide() {}
+//     public void Hide() {}
 
-    public void Show() {}
+//     public void Show() {}
 
-    public bool isHidden() {}
+//     public bool isHidden() {}
 
-    public string GetDisplayText() {}
-}
+//     public string GetDisplayText() {}
+// }
