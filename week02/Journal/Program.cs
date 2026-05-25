@@ -1,7 +1,4 @@
 using System;
-using GeneratePrompt;
-using JournalEntry;
-using JournalManager;
 class Program
 {
     static void Main(string[] arg)
